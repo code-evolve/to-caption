@@ -122,4 +122,44 @@ describe('toCaption', () => {
     expect(toCaption('helloWorld', { onAllUppercase: 'keep' })).to.equal('Hello World')
   })
 
+  it('treats a string with no letters as not all uppercase', () => {
+    expect(toCaption('123_456', { onAllUppercase: 'keep' })).to.equal('123 456')
+    expect(toCaption('___', { onAllUppercase: 'keep' })).to.equal('')
+  })
+
+  it('keeps an all uppercase string exactly, delimiters included', () => {
+    expect(toCaption('_HELLO_WORLD_', { onAllUppercase: 'keep' })).to.equal('_HELLO_WORLD_')
+  })
+
+  it('does not split capitals after a digit or symbol in titlecase', () => {
+    expect(toCaption('AAAA1A', { onAllUppercase: 'titlecase' })).to.equal('Aaaa1a')
+    expect(toCaption('AAAA/A', { onAllUppercase: 'titlecase' })).to.equal('Aaaa/a')
+  })
+
+  it('returns an empty string for a non-string', () => {
+    expect(toCaption(42)).to.equal('')
+    expect(toCaption({})).to.equal('')
+  })
+
+  it('leaves digits attached by default', () => {
+    expect(toCaption('address2')).to.equal('Address2')
+    expect(toCaption('item2Name')).to.equal('Item2 Name')
+  })
+
+  it('spaces non-ASCII capitals', () => {
+    expect(toCaption('fooÉtatÜber')).to.equal('Foo État Über')
+  })
+
+  it('capitalizes a non-ASCII first letter', () => {
+    expect(toCaption('écoleNormale')).to.equal('École Normale')
+  })
+
+  it('titlecases non-ASCII words', () => {
+    expect(toCaption('ÉCOLE_NORMALE', { onAllUppercase: 'titlecase' })).to.equal('École Normale')
+  })
+
+  it('keeps a character outside the basic plane whole', () => {
+    expect(toCaption('😀fooBar')).to.equal('😀foo Bar')
+  })
+
 })

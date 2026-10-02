@@ -23,6 +23,12 @@ describe('entry points', () => {
     expect(required('helloWorld')).to.equal('Hello World')
   })
 
+  it('carries the options into the CommonJS build', () => {
+    const required = require('to-caption')
+    expect(required('parseHTTP2Response', { acronyms: 'keep', numbers: 'split' })).to.equal('Parse HTTP 2 Response')
+    expect(required('fooÉtat')).to.equal('Foo État')
+  })
+
   it('keeps the dist path requirable', () => {
     expect(require('to-caption/dist/toCaption.js')('helloWorld')).to.equal('Hello World')
   })
