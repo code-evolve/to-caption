@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0
+* Add `acronyms: 'keep'`, which holds a run of capitals together (`parseHTTPResponse` becomes `Parse HTTP Response`)
+* Add `numbers: 'split'`, which puts a space between digits and letters (`address2` becomes `Address 2`)
+* Add `delimiters`, to replace the default `._-` with your own characters
+* Fix: capitals outside A to Z now start a word (`fooÉtat` becomes `Foo État`)
+* Fix: a string with no letters is no longer treated as all uppercase, so `onAllUppercase: 'keep'` no longer returns `123_456` or `___` untouched
+* Fix: a first character outside the basic multilingual plane is no longer cut in half
+* Clarify the readme: what counts as all uppercase, what `'keep'` returns, and a table of every option
+* The repository moved to github.com/code-evolve/to-caption; the old address redirects
+* The browser build needs Unicode property escapes (Chrome 64, Firefox 78, Safari 11.1)
+
 ## 1.2.0
 * `require('to-caption')` returns the function, through a CommonJS build and an `exports` map
 * TypeScript declarations resolve for both `import` and `require`, and export `ToCaptionOptions`
