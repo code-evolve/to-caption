@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Homepage is the to-caption section of the Utilities page at code-evolve.com; the old product page redirects there
+
 ## 1.3.0
 * Add `acronyms: 'keep'`, which holds a run of capitals together (`parseHTTPResponse` becomes `Parse HTTP Response`)
 * Add `numbers: 'split'`, which puts a space between digits and letters (`address2` becomes `Address 2`)

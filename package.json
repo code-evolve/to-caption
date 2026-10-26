@@ -80,7 +80,7 @@
     "url": "git+https://github.com/code-evolve/to-caption.git"
   },
   "bugs": "https://github.com/code-evolve/to-caption/issues",
-  "homepage": "https://www.code-evolve.com/products/to-caption",
+  "homepage": "https://code-evolve.com/products/utilities#to-caption",
   "browserslist": "> 0.25%, not dead",
   "config": {
     "copyright": {
